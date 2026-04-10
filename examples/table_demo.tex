@@ -1,0 +1,57 @@
+% =============================================================
+% table_demo.tex  —  Paper Style color command reference
+% This is a SNIPPET, not a compilable document.
+% Paste these table environments into your paper after loading:
+%   \usepackage{colors}   or   \documentclass{mystyle}
+% =============================================================
+
+
+% -------------------------------------------------------------
+% TABLE 1: Comparison table using ranking macros
+%   \fst{value}  — gold background,  1st place
+%   \snd{value}  — silver background, 2nd place
+%   \trd{value}  — bronze background, 3rd place
+% -------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \caption{Quantitative comparison. \fst{Best}, \snd{2nd}, \trd{3rd}.}
+  \label{tab:comparison}
+  \begin{tabular}{lcccc}
+    \toprule
+    Method & FID$\downarrow$ & CLIP$\uparrow$ & Aesth.$\uparrow$ & IS$\uparrow$ \\
+    \midrule
+    Baseline       & 18.4          & 0.312          & 5.71          & 24.3 \\
+    Prior Work     & \trd{14.2}    & \snd{0.331}    & \snd{5.89}    & \snd{27.1} \\
+    Ours (comma)   & \snd{12.8}    & \trd{0.328}    & \trd{5.85}    & \trd{26.5} \\
+    Ours (full)    & \fst{11.3}    & \fst{0.345}    & \fst{6.02}    & \fst{29.7} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+% -------------------------------------------------------------
+% TABLE 2: Ablation table using performance heat cells
+%   \cellcolor{perf30}  — lightest tint  (~30 % performance)
+%   \cellcolor{perf50}  — medium tint    (~50 %)
+%   \cellcolor{perf70}  — darker tint    (~70 %)
+%   \cellcolor{perf80}  — deepest tint   (~80 %+)
+%
+%   perf30..perf80 are defined in colors.tex as shades of the
+%   theme's primary color. Combine with numeric value for
+%   a quick visual scan of performance gradients.
+% -------------------------------------------------------------
+\begin{table}[t]
+  \centering
+  \caption{Ablation study. Cell shade reflects relative performance.}
+  \label{tab:ablation}
+  \begin{tabular}{lccc}
+    \toprule
+    Config & CLIP$\uparrow$ & Aesth.$\uparrow$ & FID$\downarrow$ \\
+    \midrule
+    No repeat          & \cellcolor{perf30} 0.298 & \cellcolor{perf30} 5.40 & 22.1 \\
+    Repeat ×100        & \cellcolor{perf50} 0.318 & \cellcolor{perf50} 5.65 & 16.8 \\
+    Repeat ×200        & \cellcolor{perf80} 0.341 & \cellcolor{perf80} 5.97 & 12.1 \\
+    Repeat ×400        & \cellcolor{perf70} 0.329 & \cellcolor{perf70} 5.82 & 13.9 \\
+    \bottomrule
+  \end{tabular}
+\end{table}

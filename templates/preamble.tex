@@ -1,0 +1,37 @@
+% Paper Style — Portable Preamble
+% Add after \documentclass and \input{colors}
+
+% Alias theme colors to cls-level names
+\colorlet{TinaCrimson}{accent_primary}
+\colorlet{CalGoldHex}{bg_title}
+\colorlet{YaleBlue}{accent_cite}
+
+% Re-apply titlebox with theme colors (cls snapshots at load time)
+\tcbset{titlebox/.style={colback=bg_title, colframe=bg_title,
+    boxrule=0mm, arc=2mm, auto outer arc,
+    left=5mm, right=5mm, top=5mm, bottom=5mm, enhanced,
+    overlay={\ifx\thelogo\empty\else
+      \IfFileExists{\thelogo}{%
+        \node[anchor=south east,xshift=-3mm,yshift=4mm] at (frame.south east)
+          {\includegraphics[width=\abstractlogowidth]{\thelogo}};}{}\fi}}}
+
+% Callout box
+\newtcolorbox{abox}{colback=bg_sepia,colframe=accent_primary!60,
+    boxrule=0.3mm,arc=2mm,left=5mm,right=5mm,top=3mm,bottom=3mm}
+
+% Hyperref colors
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent_primary,
+    citecolor=accent_cite,
+    linkcolor=accent_primary
+}
+
+% Common packages (some also loaded by mystyle.cls; kept here for standalone use)
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{amssymb}

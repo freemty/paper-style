@@ -1,0 +1,194 @@
+% ============================================================
+% Analemma Color System — Low-Saturation Unified Template
+% Five themes: red (default), blue, gold, green, purple.
+% Switch by toggling \themename below (init script overwrites this line).
+% ============================================================
+
+% ---- Theme switch: uncomment exactly ONE line ----
+\newcommand{\themename}{red}     % Warm desaturated burgundy/rose
+% \newcommand{\themename}{blue}    % Analemma desaturated slate blue
+% \newcommand{\themename}{gold}    % Warm beige/gold
+% \newcommand{\themename}{green}   % Deep forest green
+% \newcommand{\themename}{purple}  % Deep plum
+
+% ============================================================
+% Theme-dependent accent colors
+% (xifthen already loaded by mystyle.cls)
+% ============================================================
+
+\ifthenelse{\equal{\themename}{red}}{
+  % ---- RED THEME: warm desaturated burgundy ----
+  \newcommand{\thelogo}{}
+  \definecolor{accent_primary}{HTML}{5E3545}   % Deeper desaturated burgundy
+  \definecolor{accent_cite}{HTML}{52423A}      % Deeper warm brown for citations
+  \definecolor{bg_title}{HTML}{F6F4F4}         % Very subtle rose tint, low saturation
+  \definecolor{bg_sepia}{HTML}{F7F5F5}         % Light warm background, low saturation
+  \definecolor{bordercolor}{HTML}{d9cec8}      % Warm beige border
+
+  % Table heatmap gradient (hue-shifted from blue reference, same S/L curve)
+  \definecolor{perf0}{HTML}{ffffff}
+  \definecolor{perf10}{HTML}{fbf5f7}
+  \definecolor{perf20}{HTML}{f5ebee}
+  \definecolor{perf30}{HTML}{eee0e3}
+  \definecolor{perf40}{HTML}{e8d5da}
+  \definecolor{perf50}{HTML}{e2cbd1}
+  \definecolor{perf60}{HTML}{dcc0c7}
+  \definecolor{perf70}{HTML}{d5b3bb}
+  \definecolor{perf80}{HTML}{cea5af}
+
+  % Table ranking highlights
+  \definecolor{firstcolor}{HTML}{E8C8D0}
+  \definecolor{secondcolor}{HTML}{E8D0D6}
+  \definecolor{thirdcolor}{HTML}{E8DCDF}
+
+  % Extended palette (for plots, diagrams)
+  \definecolor{PaletteDeep}{HTML}{270A11}
+  \definecolor{PaletteIndigo}{HTML}{561A29}
+  \definecolor{PaletteMid}{HTML}{A72B4A}
+  \definecolor{PaletteLight}{HTML}{EAA8B9}
+  \definecolor{PaletteSilver}{HTML}{EFD4DB}
+}{%
+\ifthenelse{\equal{\themename}{blue}}{
+  % ---- BLUE THEME: Analemma desaturated slate blue (more desaturated) ----
+  \newcommand{\thelogo}{}
+  \definecolor{accent_primary}{HTML}{3C4A57}   % Desaturated slate blue
+  \definecolor{accent_cite}{HTML}{3E464E}      % Slightly lighter slate for citations
+  \definecolor{bg_title}{HTML}{F4F5F6}         % Cool off-white
+  \definecolor{bg_sepia}{HTML}{F5F6F7}         % Light cool background
+  \definecolor{bordercolor}{HTML}{CBD1D6}      % Cool gray-blue border
+
+  % Table heatmap gradient (muted blue-gray — low saturation)
+  \definecolor{perf0}{HTML}{ffffff}
+  \definecolor{perf10}{HTML}{f6f8fa}
+  \definecolor{perf20}{HTML}{edf0f3}
+  \definecolor{perf30}{HTML}{e2e7ec}
+  \definecolor{perf40}{HTML}{d8dfe5}
+  \definecolor{perf50}{HTML}{cfd6de}
+  \definecolor{perf60}{HTML}{c5ced7}
+  \definecolor{perf70}{HTML}{b9c4cf}
+  \definecolor{perf80}{HTML}{acbac7}
+
+  % Table ranking highlights (low-saturation cool tones)
+  \definecolor{firstcolor}{HTML}{CED8E2}
+  \definecolor{secondcolor}{HTML}{D4DCE4}
+  \definecolor{thirdcolor}{HTML}{DEE2E6}
+
+  % Extended palette (for plots, diagrams)
+  \definecolor{PaletteDeep}{HTML}{0F1822}
+  \definecolor{PaletteIndigo}{HTML}{25384C}
+  \definecolor{PaletteMid}{HTML}{416991}
+  \definecolor{PaletteLight}{HTML}{B4C9DE}
+  \definecolor{PaletteSilver}{HTML}{D9E2EA}
+}{%
+\ifthenelse{\equal{\themename}{gold}}{
+  % ---- GOLD THEME: warm beige/gold ----
+  \newcommand{\thelogo}{}
+  \definecolor{accent_primary}{HTML}{564D3D}   % Desaturated dark gold / olive-gold
+  \definecolor{accent_cite}{HTML}{4D483F}      % Warm brown for citations
+  \definecolor{bg_title}{HTML}{F6F5F4}         % Warm cream (beige tint)
+  \definecolor{bg_sepia}{HTML}{F7F6F5}         % Light warm background
+  \definecolor{bordercolor}{HTML}{D6D2CB}      % Warm gold-beige border
+
+  % Table heatmap gradient (warm beige curve)
+  \definecolor{perf0}{HTML}{ffffff}
+  \definecolor{perf10}{HTML}{faf8f6}
+  \definecolor{perf20}{HTML}{f3f1ed}
+  \definecolor{perf30}{HTML}{ebe8e3}
+  \definecolor{perf40}{HTML}{e4e0d9}
+  \definecolor{perf50}{HTML}{ddd8d0}
+  \definecolor{perf60}{HTML}{d6d0c6}
+  \definecolor{perf70}{HTML}{cec7ba}
+  \definecolor{perf80}{HTML}{c6bdad}
+
+  % Table ranking highlights
+  \definecolor{firstcolor}{HTML}{E2DBCE}
+  \definecolor{secondcolor}{HTML}{E3DED5}
+  \definecolor{thirdcolor}{HTML}{E6E3DE}
+
+  % Extended palette (for plots, diagrams)
+  \definecolor{PaletteDeep}{HTML}{211B10}
+  \definecolor{PaletteIndigo}{HTML}{4A3D26}
+  \definecolor{PaletteMid}{HTML}{8E7344}
+  \definecolor{PaletteLight}{HTML}{DDCEB5}
+  \definecolor{PaletteSilver}{HTML}{EAE4D9}
+}{%
+\ifthenelse{\equal{\themename}{green}}{
+  % ---- GREEN THEME: deep forest green ----
+  \newcommand{\thelogo}{}
+  \definecolor{accent_primary}{HTML}{2A4438}   % Deep forest green
+  \definecolor{accent_cite}{HTML}{2A4438}      % Same deep green for citations
+  \definecolor{bg_title}{HTML}{F4F6F5}         % Very subtle green tint
+  \definecolor{bg_sepia}{HTML}{F5F7F6}         % Light green-tinted background
+  \definecolor{bordercolor}{HTML}{C8D9D2}      % Muted green border
+
+  % Table heatmap gradient (forest green curve)
+  \definecolor{perf0}{HTML}{ffffff}
+  \definecolor{perf10}{HTML}{f5faf8}
+  \definecolor{perf20}{HTML}{ebf4f0}
+  \definecolor{perf30}{HTML}{e0ede7}
+  \definecolor{perf40}{HTML}{d5e6de}
+  \definecolor{perf50}{HTML}{cbe0d6}
+  \definecolor{perf60}{HTML}{c0d9cd}
+  \definecolor{perf70}{HTML}{b3d1c3}
+  \definecolor{perf80}{HTML}{a5c9b9}
+
+  % Table ranking highlights
+  \definecolor{firstcolor}{HTML}{C8E8DB}
+  \definecolor{secondcolor}{HTML}{D0E8DE}
+  \definecolor{thirdcolor}{HTML}{DCE8E3}
+
+  % Extended palette (for plots, diagrams)
+  \definecolor{PaletteDeep}{HTML}{081810}
+  \definecolor{PaletteIndigo}{HTML}{143026}
+  \definecolor{PaletteMid}{HTML}{24604A}
+  \definecolor{PaletteLight}{HTML}{A8EACF}
+  \definecolor{PaletteSilver}{HTML}{D4EFE4}
+}{
+  % ---- PURPLE THEME: deep plum ----
+  \newcommand{\thelogo}{}
+  \definecolor{accent_primary}{HTML}{3E2548}   % Deep plum
+  \definecolor{accent_cite}{HTML}{3E2548}      % Same deep plum for citations
+  \definecolor{bg_title}{HTML}{F6F4F6}         % Very subtle purple tint
+  \definecolor{bg_sepia}{HTML}{F7F5F7}         % Light purple-tinted background
+  \definecolor{bordercolor}{HTML}{D6C8D9}      % Muted purple border
+
+  % Table heatmap gradient (plum curve)
+  \definecolor{perf0}{HTML}{ffffff}
+  \definecolor{perf10}{HTML}{f9f5fb}
+  \definecolor{perf20}{HTML}{f2ebf5}
+  \definecolor{perf30}{HTML}{ebe0ee}
+  \definecolor{perf40}{HTML}{e4d5e8}
+  \definecolor{perf50}{HTML}{ddcbe2}
+  \definecolor{perf60}{HTML}{d6c0dc}
+  \definecolor{perf70}{HTML}{ceb3d5}
+  \definecolor{perf80}{HTML}{c6a5ce}
+
+  % Table ranking highlights
+  \definecolor{firstcolor}{HTML}{E3C8E8}
+  \definecolor{secondcolor}{HTML}{E4D0E8}
+  \definecolor{thirdcolor}{HTML}{E6DCE8}
+
+  % Extended palette (for plots, diagrams)
+  \definecolor{PaletteDeep}{HTML}{150820}
+  \definecolor{PaletteIndigo}{HTML}{2A1238}
+  \definecolor{PaletteMid}{HTML}{5C2870}
+  \definecolor{PaletteLight}{HTML}{DFA8EA}
+  \definecolor{PaletteSilver}{HTML}{EBD4EF}
+}}}}
+
+% ============================================================
+% Theme-independent utility colors (kept for legacy compat)
+% ============================================================
+\definecolor{LightCyan}{rgb}{.9, .95, 1.}
+\definecolor{SDEblue}{RGB}{28, 58, 88}
+\definecolor{cc1}{rgb}{1.0, 0.44, 0.37}
+\definecolor{cc2}{rgb}{0.0, 0.2, 0.6}
+\definecolor{cc3}{RGB}{255, 191, 0}
+\definecolor{cc4}{RGB}{0, 128, 128}
+
+% ============================================================
+% Table ranking commands (\fst, \snd, \trd)
+% ============================================================
+\newcommand{\fst}[1]{\cellcolor{firstcolor}#1}
+\newcommand{\snd}[1]{\cellcolor{secondcolor}#1}
+\newcommand{\trd}[1]{\cellcolor{thirdcolor}#1}
