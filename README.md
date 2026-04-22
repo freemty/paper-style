@@ -18,13 +18,13 @@ See [`examples/all_themes_preview.pdf`](examples/all_themes_preview.pdf) for all
 
 ## Install
 
-### Via Skills CLI (recommended)
+### Via skills.sh (recommended)
 
 ```bash
 npx skills add freemty/paper-style -g
 ```
 
-Browse on [skills.sh](https://skills.sh/)
+Works with Claude Code, Cursor, Codex, Windsurf, and [15+ other agents](https://skills.sh).
 
 ### Via git clone
 
