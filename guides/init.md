@@ -11,27 +11,40 @@ You are setting up a new paper project with the Paper Style theme system.
 
 ### Steps
 
-1. **Detect target directory.** If the project has a `paper/` directory, use it.
-   Otherwise use the task-specified location, or create `paper/` by default.
+1. **Choose target and mode.** Use the explicit task location first, otherwise the
+   existing `paper/`, or a new `paper/`. A supplied venue template wins over the
+   personal report class. For palette-only integration read `guides/inject.md`.
 
-2. **Check for existing files.** Look for `colors.tex`, `mystyle.cls`, `preamble.tex` in the target.
-   - If any exist, ask: "Found existing {files}. Overwrite, backup (.bak), or abort?"
-   - Respect the user's choice.
+2. **Preflight all destinations.** The initializer checks LaTeX files AND Python
+   files before writing. Identical files are a no-op. If differing files conflict,
+   reuse existing authorization when it covers them; otherwise ask only about
+   those concrete conflicts. Never silently overwrite user palette code.
 
-3. **Copy LaTeX templates.** From this skill's `templates/` directory, copy to the target:
-   - `colors.tex`
-   - `mystyle.cls` (skip if `--inject`)
-   - `preamble.tex`
+3. **Initialize through the bundled script:**
 
-4. **Set the theme.** In the copied `colors.tex`, change the `\newcommand{\themename}{...}`
-   line to the requested theme name.
+   ```bash
+   python3 <paper-style>/scripts/init_paper_style.py <paper-dir> --python-dir <project-root> --theme blue
+   ```
 
-5. **Copy Python files.** Copy to the project root (not paper/):
-   - `paper_palette.py`
-   - `academic.mplstyle`
+   This copies `colors.tex`, `mystyle.cls`, the legacy `preamble.tex` entry plus
+   its common/class-specific components, `paper_palette.py`, and `academic.mplstyle`.
+   It stages writes after a complete preflight and rolls back changed file contents
+   on an ordinary write failure. This is not a crash-atomic multi-file transaction.
+   `--force` is only for authorized replacement of the managed regular files;
+   symlink/file-type conflicts are never followed. Back up user customizations
+   before a requested overwrite if their recovery matters.
 
-6. **Set Python default theme.** In the copied `paper_palette.py`, change
-   `DEFAULT_THEME = "red"` to match the requested theme.
+4. **Verify theme.** The script sets both the LaTeX theme and Python default to
+   the same selected value; inspect their agreement.
+
+5. **Integrate only in scope.** For a new personal report, use `mystyle` and load
+   `colors` then `preamble` in the main source. Do not replace existing main files.
+   This class captures the abstract before drawing its title block: place the
+   `abstract` environment before `\maketitle`. Preserve that legacy contract.
+
+6. **Validate the result.** Build with the project's engine, inspect logs and PDF
+   pages, and compare any existing baseline. Record missing toolchain dependencies
+   without silently installing a full TeX distribution.
 
 7. **Report success.** Print:
    ```
@@ -41,5 +54,5 @@ You are setting up a new paper project with the Paper Style theme system.
    Python: from paper_palette import apply_theme
    Style:  plt.style.use("academic.mplstyle")
 
-   Switch themes: /paper-style guard → "switch to blue"
+   Switch themes: use Paper Style's guard mode with "switch to blue".
    ```

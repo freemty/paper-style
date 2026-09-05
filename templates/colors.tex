@@ -4,6 +4,11 @@
 % Switch by toggling \themename below (init script overwrites this line).
 % ============================================================
 
+% Palette dependencies only: no typography, layout, or hyperlink policy change.
+\RequirePackage{xcolor}
+\RequirePackage{xifthen}
+\RequirePackage{colortbl}
+
 % ---- Theme switch: uncomment exactly ONE line ----
 \newcommand{\themename}{red}     % Warm desaturated burgundy/rose
 % \newcommand{\themename}{blue}    % Analemma desaturated slate blue
@@ -13,12 +18,12 @@
 
 % ============================================================
 % Theme-dependent accent colors
-% (xifthen already loaded by mystyle.cls)
+% (dependencies loaded above; usable with an existing venue class)
 % ============================================================
 
 \ifthenelse{\equal{\themename}{red}}{
   % ---- RED THEME: warm desaturated burgundy ----
-  \newcommand{\thelogo}{}
+  \providecommand{\thelogo}{}
   \definecolor{accent_primary}{HTML}{5E3545}   % Deeper desaturated burgundy
   \definecolor{accent_cite}{HTML}{52423A}      % Deeper warm brown for citations
   \definecolor{bg_title}{HTML}{F6F4F4}         % Very subtle rose tint, low saturation
@@ -50,7 +55,7 @@
 }{%
 \ifthenelse{\equal{\themename}{blue}}{
   % ---- BLUE THEME: Analemma desaturated slate blue (more desaturated) ----
-  \newcommand{\thelogo}{}
+  \providecommand{\thelogo}{}
   \definecolor{accent_primary}{HTML}{3C4A57}   % Desaturated slate blue
   \definecolor{accent_cite}{HTML}{3E464E}      % Slightly lighter slate for citations
   \definecolor{bg_title}{HTML}{F4F5F6}         % Cool off-white
@@ -82,7 +87,7 @@
 }{%
 \ifthenelse{\equal{\themename}{gold}}{
   % ---- GOLD THEME: warm beige/gold ----
-  \newcommand{\thelogo}{}
+  \providecommand{\thelogo}{}
   \definecolor{accent_primary}{HTML}{564D3D}   % Desaturated dark gold / olive-gold
   \definecolor{accent_cite}{HTML}{4D483F}      % Warm brown for citations
   \definecolor{bg_title}{HTML}{F6F5F4}         % Warm cream (beige tint)
@@ -114,7 +119,7 @@
 }{%
 \ifthenelse{\equal{\themename}{green}}{
   % ---- GREEN THEME: deep forest green ----
-  \newcommand{\thelogo}{}
+  \providecommand{\thelogo}{}
   \definecolor{accent_primary}{HTML}{2A4438}   % Deep forest green
   \definecolor{accent_cite}{HTML}{2A4438}      % Same deep green for citations
   \definecolor{bg_title}{HTML}{F4F6F5}         % Very subtle green tint
@@ -145,7 +150,7 @@
   \definecolor{PaletteSilver}{HTML}{D4EFE4}
 }{
   % ---- PURPLE THEME: deep plum ----
-  \newcommand{\thelogo}{}
+  \providecommand{\thelogo}{}
   \definecolor{accent_primary}{HTML}{3E2548}   % Deep plum
   \definecolor{accent_cite}{HTML}{3E2548}      % Same deep plum for citations
   \definecolor{bg_title}{HTML}{F6F4F6}         % Very subtle purple tint

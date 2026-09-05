@@ -2,7 +2,9 @@
 
 5 low-saturation color themes for academic papers — unified LaTeX + matplotlib visual identity.
 
-A [Claude Code](https://claude.ai/claude-code) skill that provides consistent styling from `\documentclass` to `plt.savefig`.
+A portable Agent Skill for consistent styling from LaTeX to matplotlib. Personal
+technical reports and palette-only integration into an existing venue template
+are separate paths; a prose edit does not automatically adopt a new style.
 
 ## Preview
 
@@ -49,19 +51,43 @@ npx skills update
 
 ## Usage without Claude Code
 
+Codex: `$paper-style`. Other hosts: use the skill selector or ask naturally.
+
+Safe deterministic initialization:
+
+```bash
+python3 scripts/init_paper_style.py paper --python-dir . --theme blue
+python3 scripts/init_paper_style.py paper --python-dir . --theme blue --inject
+```
+
+All destinations are checked before writes, identical files are a no-op, and
+conflicts require explicit resolution. `--force` replaces only managed regular
+files; it never follows destination symlinks. Keep backups for customized files.
+The operation rolls back file contents on ordinary write errors, but cannot
+promise multi-file crash atomicity.
+
 Templates work standalone — just copy what you need:
 
 ### LaTeX
 
 ```latex
 % In your main.tex
-\documentclass[11pt,letterpaper]{mystyle}   % or your own cls
+\documentclass[11pt,letterpaper]{mystyle}   % personal report, not a venue replacement
 \input{colors}
 \input{preamble}
 \begin{document}
+  \begin{abstract}Your abstract, captured before the title block.\end{abstract}
+  \maketitle
   ...
 \end{document}
 ```
+
+For an existing venue class, use `--inject`, keep the original `\documentclass`,
+and add only `\input{colors}` plus requested color uses to the main source.
+Do not load the report preamble, edit vendor class files, or change font/margins,
+anonymity, bibliography or link policy. Check name collisions and venue rules,
+then build and visually compare affected pages. Palette initialization is not
+venue certification or visual QA.
 
 Switch themes by editing one line in `colors.tex`:
 
@@ -104,7 +130,9 @@ plt.bar(labels, values, color=[theme["primary"], theme["secondary"]])
 templates/
   colors.tex          5-theme LaTeX color definitions
   mystyle.cls         Document class (Palatino/XCharter, CC BY-SA 4.0)
-  preamble.tex        Shared preamble (hyperref, tcolorbox, abox)
+  preamble.tex        Legacy personal-report entry
+  preamble-common.tex Optional report components
+  preamble-mystyle.tex Personal title treatment
   paper_palette.py    Python theme module (zero deps at import)
   academic.mplstyle   matplotlib style (serif, 300 DPI, clean spines)
 
@@ -120,11 +148,21 @@ examples/
 from paper_palette import get_theme, apply_theme, get_colormap, clean_ax, theme_names
 
 theme_names()          # ['red', 'blue', 'gold', 'green', 'purple']
-get_theme("red")       # {'primary': '#A72B4A', 'secondary': '#3D4F5F', ...}
+get_theme("red")       # copy of the existing named theme dictionary
 apply_theme("red")     # set rcParams + return theme dict
 get_colormap("red")    # LinearSegmentedColormap for heatmaps
 clean_ax(ax)           # remove top/right spines
 ```
+
+## Verification
+
+```bash
+python3 tests/test_init.py
+```
+
+The parent yuanbo-skills repository additionally runs real TeX/PDF checks with
+an authored venue fixture and the personal report. Actual venue releases still
+need their own current template checks; those are not simulated by the fixture.
 
 ## License
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — 2026-09-05
+
+- Separate personal report, existing venue palette injection, and scoped guard modes.
+- Add safe initializer with full LaTeX/Python preflight, idempotence and write-error rollback.
+- Split optional common report components from `mystyle` title treatment while retaining `preamble.tex`.
+- Keep palette dependencies self-contained and preserve existing logo declarations.
+- Fix empty-logo handling and document the existing abstract-before-title contract.
+- Verify real PDF output, existing layout/citations and theme agreement; initialization alone is not QA.
+
 ## [1.0.0] — 2026-04-10
 
 ### Added

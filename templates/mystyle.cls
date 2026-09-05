@@ -281,10 +281,10 @@ letterpaper]{geometry}%
     bottom=5mm,
     enhanced,
     overlay={%
-      \ifx\thelogo\empty\else
+      \ifthenelse{\equal{\thelogo}{}}{}{%
         \IfFileExists{\thelogo}{%
           \node[anchor=south east,xshift=-3mm,yshift=4mm] at (frame.south east) {\includegraphics[width=\abstractlogowidth]{\thelogo}};%
-        }{}\fi},
+        }{}}},
   }
 }
 

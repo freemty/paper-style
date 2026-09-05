@@ -1,0 +1,15 @@
+% Personal mystyle.cls title treatment; never inject into a venue class.
+\colorlet{TinaCrimson}{accent_primary}
+\colorlet{CalGoldHex}{bg_title}
+\colorlet{YaleBlue}{accent_cite}
+\tcbset{titlebox/.style={colback=bg_title,colframe=bg_title,
+    boxrule=0mm,arc=2mm,auto outer arc,
+    left=5mm,right=5mm,top=5mm,bottom=5mm,enhanced,
+    overlay={\ifthenelse{\equal{\thelogo}{}}{}{%
+      \IfFileExists{\thelogo}{%
+        \node[anchor=south east,xshift=-3mm,yshift=4mm] at (frame.south east)
+          {\includegraphics[width=\abstractlogowidth]{\thelogo}};%
+      }{}%
+    }%
+  }%
+}}
