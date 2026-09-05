@@ -1,6 +1,6 @@
 # Inject Guide — Add Colors to Existing Document Class
 
-## Instructions for Claude
+## Execution guidance
 
 The user has their own `.cls` file and wants only the color system, not mystyle.cls.
 

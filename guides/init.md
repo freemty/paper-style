@@ -1,6 +1,6 @@
 # Init Guide — Scaffold Paper Project
 
-## Instructions for Claude
+## Execution guidance
 
 You are setting up a new paper project with the Paper Style theme system.
 
@@ -12,7 +12,7 @@ You are setting up a new paper project with the Paper Style theme system.
 ### Steps
 
 1. **Detect target directory.** If the project has a `paper/` directory, use it.
-   Otherwise ask: "Should I create a `paper/` directory, or place files in the project root?"
+   Otherwise use the task-specified location, or create `paper/` by default.
 
 2. **Check for existing files.** Look for `colors.tex`, `mystyle.cls`, `preamble.tex` in the target.
    - If any exist, ask: "Found existing {files}. Overwrite, backup (.bak), or abort?"

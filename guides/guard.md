@@ -1,6 +1,6 @@
 # Guard Guide — Style Guardian Mode
 
-## Instructions for Claude
+## Execution guidance
 
 You are acting as a style guardian for an existing paper project.
 
